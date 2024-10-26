@@ -1,11 +1,11 @@
 import React from 'react';
 import PieChart from './PieChart';
 import BarChart from './BarChart';
-import LineChart from './LineChart';
+import LineGraph from './LineChart';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useNavigate } from 'react-router-dom';
 
-const Dashboard = ({ list1, cholesterol, glucose, bodyTemperature, bloodPressure, medicationData, stepData }) => {
+const Dashboard = ({ lineChartData, cholesterol, glucose, bodyTemperature, bloodPressure, medicationData, stepData }) => {
   const { logout } = useAuth0();
   const navigate = useNavigate();
 
@@ -62,7 +62,7 @@ const Dashboard = ({ list1, cholesterol, glucose, bodyTemperature, bloodPressure
 
           <div className="bg-gray-800 p-4 rounded-lg shadow-md col-span-1 md:col-span-4 flex flex-col">
             <h2 className="text-lg font-medium text-white">Heart Rate Monitor</h2>
-            <LineChart list1={list1} />
+            <LineGraph list1={lineChartData} />  {/* Pass the list1 prop for heart rate data */}
           </div>
 
           {/* Chart containers for PieChart and BarChart */}

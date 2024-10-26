@@ -1,4 +1,4 @@
-#Your API is not workihg so the line graph will not work
+#Your API is not workihg so I have made some change to get the heart rate working thats why I had to recommit.
 
 # Getting Started with Create React App
 

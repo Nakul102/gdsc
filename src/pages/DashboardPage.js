@@ -7,21 +7,27 @@ import '../styles/styles.css';
 
 const DashboardPage = () => {
   const { user, isAuthenticated } = useAuth0();
-  const { list1, bloodPressure, bodyTemperature, cholesterol, glucose } = useWebSocket();
+  const { bloodPressure, bodyTemperature, cholesterol, glucose } = useWebSocket(); 
   const navigate = useNavigate();
-
-  console.log("DashboardPage Component Rendered, isAuthenticated:", isAuthenticated);
-
+  const [lineChartData, setLineChartData] = useState([34, 56, 54, 36, 62, 67, 89, 34, 12, 23, 45, 56, 78]);
   const [medicationData, setMedicationData] = useState([70, 30]);
   const [stepData, setStepData] = useState({
     stepsWalked: [1245, 1374, 2056, 2404, 3140, 2035, 1678],
     targetSteps: [8000, 8000, 8000, 8000, 8000, 8000, 8000],
   });
 
+  // Function to generate new random line chart data based on specified pattern
+  const generateRandomLineChartData = () => {
+    setLineChartData((prevData) => {
+      const newData = [...prevData.slice(1), Math.floor(Math.random() * (80 - 60 + 1)) + 60];
+      return newData;
+    });
+  };
+
   // Function to generate random medication data
   const generateRandomMedicationData = () => {
-    const randomValue = Math.floor(Math.random() * 100); // Random value between 0-100
-    const randomMedicationData = [randomValue, 100 - randomValue]; // Split into two categories
+    const randomValue = Math.floor(Math.random() * 100);
+    const randomMedicationData = [randomValue, 100 - randomValue];
     setMedicationData(randomMedicationData);
   };
 
@@ -36,14 +42,16 @@ const DashboardPage = () => {
     });
   };
 
-  // useEffect to set intervals for generating random data
+  // Set intervals for generating random data
   useEffect(() => {
     const medicationInterval = setInterval(generateRandomMedicationData, 4000); 
-    const stepInterval = setInterval(generateRandomStepData, 4000); 
+    const stepInterval = setInterval(generateRandomStepData, 4000);
+    const lineChartInterval = setInterval(generateRandomLineChartData, 1000); // Interval for line chart data
 
     return () => {
       clearInterval(medicationInterval);
       clearInterval(stepInterval);
+      clearInterval(lineChartInterval); // Clear line chart interval
     };
   }, []);
 
@@ -73,7 +81,7 @@ const DashboardPage = () => {
       </div>
 
       <Dashboard
-        list1={list1}
+        lineChartData={lineChartData} // Pass line chart data to Dashboard
         cholesterol={cholesterol}
         glucose={glucose}
         bloodPressure={bloodPressure}

@@ -9,7 +9,7 @@ const useWebSocket = () => {
   //   glucose: 100,     // Initial simulated value
   //   bloodPressure: { systolic: 120, diastolic: 80 } // Initial simulated value
   // });
-  const [data,setLine]=useState({list1:[34,56,54,36,62,67,89,34,12,23,45,56,78],
+  const [data,setLine]=useState({
     cholesterol:100,
     glucose:200,
     bodyTemperature: 98.6, // Initial body temperature
