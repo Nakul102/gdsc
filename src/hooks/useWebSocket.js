@@ -12,8 +12,9 @@ const useWebSocket = () => {
   const [data,setLine]=useState({list1:[34,56,54,36,62,67,89,34,12,23,45,56,78],
     cholesterol:100,
     glucose:200,
-    bloodPressure:150
-  })
+    bodyTemperature: 98.6, // Initial body temperature
+    bloodPressure: { systolic: 120, diastolic: 80 }, // Initial blood pressure
+  });
   // useEffect(()=>{
   //   socket.on('random_number', (heartRate) => {
   //     setData((prevState) => ({
