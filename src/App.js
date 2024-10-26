@@ -1,25 +1,23 @@
-import logo from './logo.svg';
+import React from 'react';
+import { Auth0Provider } from '@auth0/auth0-react';
+import DashboardPage from './pages/DashboardPage';
+import Login from './pages/Login';
 import './App.css';
+import BackgroundSVG from './subtle-prism.svg'; // Adjust the path
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Auth0Provider
+      domain="dev-ah4n30a7wqzo2izq.us.auth0.com"
+      clientId="TIQtvfktQ8OCMv0wU2BIxKilvMTIsqmT"
+      redirectUri={window.location.origin}
+    >
+      <div className="App">
+        <Login />
+        <DashboardPage />
+      </div>
+    </Auth0Provider>
   );
-}
+};
 
 export default App;

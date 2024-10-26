@@ -4,14 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Replace with your actual Auth0 domain and client ID
+const domain = 'dev-ah4n30a7wqzo2izq.us.auth0.com'; // e.g., 'myapp.auth0.com'
+const clientId = 'TIQtvfktQ8OCMv0wU2BIxKilvMTIsqmT'; // e.g., 'abc123'
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+      <App />
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
