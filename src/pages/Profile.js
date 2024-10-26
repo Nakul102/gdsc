@@ -5,9 +5,8 @@ import { useNavigate } from 'react-router-dom';
 const Profile = () => {
   const { user, logout, isAuthenticated } = useAuth0();
   const [randomMetricsToDisplay, setRandomMetricsToDisplay] = useState([]);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
-  // Array of random health metrics
   const healthMetrics = [
     { label: 'Daily Water Intake', value: '2.5 liters' },
     { label: 'Average Sleep', value: '7 hours' },
@@ -32,7 +31,6 @@ const Profile = () => {
     { label: 'Daily Meditation Goal', value: '10 minutes' },
   ];
 
-  // Function to randomly select health metrics to display
   const getRandomMetrics = (num) => {
     const shuffled = [...healthMetrics].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, num);
@@ -40,7 +38,6 @@ const Profile = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      // Get 5 random metrics when the component mounts
       const metrics = getRandomMetrics(5);
       setRandomMetricsToDisplay(metrics);
     }
@@ -64,28 +61,27 @@ const Profile = () => {
   }
 
   return (
-    <div className="flex h-screen bg-gradient-to-r from-green-400 to-blue-500">
+    <div className="flex flex-col md:flex-row h-screen bg-gradient-to-r from-green-400 to-blue-500">
       {/* Left Menu Bar */}
-      <div className="bg-gray-800 w-1/6 p-4 flex flex-col">
+      <div className="bg-gray-800 w-full md:w-1/6 p-4 flex flex-col">
         <h1 className="text-white text-2xl mb-2">Menu</h1>
-        <hr className="border-gray-500 mb-4" /> {/* Horizontal line */}
-
+        <hr className="border-gray-500 mb-4" />
         <ul className="space-y-3">
           <li
             className="bg-gray-700 hover:bg-gray-500 text-white font-medium py-2 px-4 rounded transition duration-200 cursor-pointer"
-            onClick={() => navigate('/dashboard')} // Navigate to Dashboard
+            onClick={() => navigate('/dashboard')}
           >
             Dashboard
           </li>
           <li
             className="bg-gray-700 hover:bg-gray-500 text-white font-medium py-2 px-4 rounded transition duration-200 cursor-pointer"
-            onClick={() => navigate('/profile')} // Navigate to Profile
+            onClick={() => navigate('/profile')}
           >
             Profile
           </li>
           <li
             className="bg-gray-700 hover:bg-gray-500 text-white font-medium py-2 px-4 rounded transition duration-200 cursor-pointer"
-            onClick={() => logout({ returnTo: window.location.origin })} // Logout
+            onClick={() => logout({ returnTo: window.location.origin })}
           >
             Logout
           </li>
@@ -93,9 +89,9 @@ const Profile = () => {
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-1 p-6 flex items-center justify-center">
-        <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4 text-center">Profile</h1>
+      <div className="flex-1 p-4 flex items-center justify-center">
+        <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg max-w-md w-full">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4 text-center">Profile</h1>
           <div className="flex flex-col items-center mb-6">
             <h2 className="text-xl font-medium text-gray-700">{user.name}</h2>
             <p className="text-gray-500">{user.email}</p>
