@@ -5,11 +5,10 @@ import { Chart as ChartJS, CategoryScale, PointElement, LineElement, LinearScale
 ChartJS.register(CategoryScale, PointElement, LineElement, LinearScale, Title, Tooltip);
 
 const LineGraph = ({ list1 }) => {
-  // Log the received data for debugging
   console.log(list1);
 
   const linearChartData = {
-    labels: [...Array(list1.length).keys()].map(i => i + 1), // Dynamic labels based on data length
+    labels: [...Array(list1.length).keys()].map(i => i + 1), 
     datasets: [
       {
         label: "Steps",
