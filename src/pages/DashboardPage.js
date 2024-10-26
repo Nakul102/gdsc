@@ -16,7 +16,7 @@ const DashboardPage = () => {
     targetSteps: [8000, 8000, 8000, 8000, 8000, 8000, 8000],
   });
 
-  // Function to generate new random line chart data based on specified pattern
+  // Function to generate new random line chart data
   const generateRandomLineChartData = () => {
     setLineChartData((prevData) => {
       const newData = [...prevData.slice(1), Math.floor(Math.random() * (80 - 60 + 1)) + 60];
@@ -81,7 +81,7 @@ const DashboardPage = () => {
       </div>
 
       <Dashboard
-        lineChartData={lineChartData} // Pass line chart data to Dashboard
+        lineChartData={lineChartData} 
         cholesterol={cholesterol}
         glucose={glucose}
         bloodPressure={bloodPressure}
